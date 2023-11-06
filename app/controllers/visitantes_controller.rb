@@ -1,10 +1,15 @@
 class VisitantesController < ApplicationController
   before_action :set_visitante, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /visitantes or /visitantes.json
   def index
-    @visitantes = Visitante.all
+    if params[:search]
+      @visitantes = Visitante.search(params[:search])
+    else
+     @visitantes = Visitante.all
   end
+end
 
   # GET /visitantes/1 or /visitantes/1.json
   def show

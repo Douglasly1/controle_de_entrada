@@ -1,14 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
+
 <h1>Visitantes</h1>
+<%= form_tag(visitantes_path, :method => :get) do %>
+  <%= text_field_tag 'search', nil, placeholder: 'Digite o CPF do visitante' %>
+  <%= submit_tag "Buscar" %>  
+    
+    <% end %>
 
 <div id="visitantes">
   <% @visitantes.each do |visitante| %>
     <%= render visitante %>
     <p>
-      <%= link_to "Show this visitante", visitante %>
+      <%= link_to "Visualizar visitantes", visitante %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New visitante", new_visitante_path %>
+<%= link_to "Cadastrar visitante", new_visitante_path %>
