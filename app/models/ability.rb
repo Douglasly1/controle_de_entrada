@@ -7,11 +7,11 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.funcionario?
-      can :read, Visita
-      can :update, Visita, id: user.visita_ids
+      can :read, Visitante
+      can :update, Visitante
     elsif user.atendente?
-      can :create, Visita
-      can :update, Visita, id: user.visita_ids
+      can :create, Visitante
+      can :update, Visitante
     end
   end
 end
