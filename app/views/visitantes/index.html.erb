@@ -16,5 +16,6 @@
     </p>
   <% end %>
 </div>
-
+<% if can? :create, Visitante %>
 <%= link_to "Cadastrar visitante", new_visitante_path %>
+<% end %>

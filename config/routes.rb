@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'adm/index'
+
   resources :visitantes
   resources :profissionals
   resources :setors
