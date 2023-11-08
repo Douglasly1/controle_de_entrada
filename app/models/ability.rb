@@ -5,13 +5,19 @@ class Ability
     user ||= User.new # convidado
 
     if user.admin?
-      can :manage, :all
+      can :manage, Unidade
+      can :manage, Setor
+      can :manage, Profissional
+      cannot :manage, Visitante
     elsif user.funcionario?
-      can :read, Visita
-      can :update, Visita, id: user.visita_ids
+      can :read, Visitante
+      can :update, Visitante
+      cannot :create, [Setor, Unidade]
     elsif user.atendente?
-      can :create, Visita
-      can :update, Visita, id: user.visita_ids
+      can :read, Visitante
+      can :create, Visitante
+      can :update, Visitante
+      cannot :create, [Setor, Unidade]
     end
   end
 end
